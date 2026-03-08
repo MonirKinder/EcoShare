@@ -1,0 +1,12 @@
+{
+  "messages" : [
+    {
+      "id" : 0,
+      "itemId" : 0,
+      "fromUserId" : 0,
+      "toUserId" : 1,
+      "messageType" : 0,
+      "content" : "Non au contraire, je pense que ça serait même plus facile."
+    }
+  ]
+}

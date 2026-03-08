@@ -1,0 +1,174 @@
+{
+  "items" : [
+    {
+      "id" : 0,
+      "sellerId" : 0,
+      "photos" : ["img_0.png", "img_17.png", "img_18.png", "img_19.png"],
+      "title" : "Lot de bols en argile verts",
+      "price" : 7.99,
+      "category" : "dummy",
+      "description" : "Lot de 5 bols en argile verts clairs de tailles et formes différentes, fabriqués dans le cadre d’un cours de poterie l’année dernière.\n\nRobustes et parfaits pour les soupes, les céréales du matin ou les apéros étudiants. Zéro plastique, 100% anti-gaspi. Un classique essentiel pour ton studio !",
+      "tags" : ["Vaisselle", "Argile", "Vert"]
+    },
+    {
+      "id": 1,
+      "sellerId" : 0,
+      "photos": ["img_1.png"],
+      "title": "Paire de tables de chevet vert mat avec lampes",
+      "price": 25.00,
+      "category" : "dummy",
+      "description": "Lot de deux tables de chevet en bois peint vert mat, au style simple et fonctionnel. Elles sont accompagnées de deux lampes de bureau assorties (une beige, une noire), parfaites pour un coin nuit ou un espace de travail.\n\nLes meubles sont stables et offrent un espace de rangement pratique. Idéal pour un studio ou une chambre étudiante. Ensemble vendu tel quel, prêt à être utilisé.",
+      "tags": ["Mobilier", "Table de chevet", "Lampe", "Vert", "Chambre"]
+    },
+    {
+      "id": 2,
+      "sellerId" : 0,
+      "photos": ["img_2.png"],
+      "title": "Lot de livres anciens reliés vert et bleu",
+      "price": 18.00,
+      "category" : "dummy",
+      "description": "Lot de 4 livres anciens à couverture rigide, avec reliures vertes et bleues patinées par le temps. Les ouvrages présentent de jolies dorures et un charme vintage authentique.\n\nParfaits pour la décoration, une bibliothèque ou un intérieur au style classique. État ancien mais cohérent avec l’âge, pages intactes.",
+      "tags": ["Livres", "Ancien", "Vintage", "Décoration"]
+    },
+    {
+      "id": 3,
+      "sellerId" : 0,
+      "photos": ["img_3.png"],
+      "title": "T-shirt gris imprimé style rétro",
+      "price": 6.00,
+      "category" : "dummy",
+      "description": "T-shirt gris clair à manches courtes avec imprimé graphique rétro sur le devant. Coupe classique, tissu doux et agréable à porter.\n\nIdéal pour un look décontracté au quotidien. En bon état général, peu porté.",
+      "tags": ["Vêtements", "T-shirt", "Gris", "Rétro"]
+    },
+    {
+      "id": 4,
+      "sellerId" : 0,
+      "photos": ["img_4.png"],
+      "title": "Lot d’assiettes dépareillées à motifs anciens",
+      "price": 15.00,
+      "category" : "dummy",
+      "description": "Lot d’assiettes dépareillées en céramique avec motifs anciens rouges et bleus. Chaque assiette a son propre décor, ce qui donne beaucoup de caractère à l’ensemble.\n\nParfaites pour une table originale, une déco murale ou un usage quotidien. Traces du temps possibles mais aucun défaut majeur.",
+      "tags": ["Vaisselle", "Assiettes", "Céramique", "Vintage"]
+    },
+    {
+      "id": 5,
+      "sellerId" : 0,
+      "photos": ["img_5.png"],
+      "title": "Lot de serviettes de bain blanches épaisses",
+      "price": 12.00,
+      "category" : "dummy",
+      "description": "Lot de serviettes de bain blanches à rayures discrètes, épaisses et très absorbantes. Douces au toucher, idéales pour un usage quotidien.\n\nConviennent parfaitement pour une salle de bain étudiante ou un premier emménagement. Propres et en bon état.",
+      "tags": ["Linge de maison", "Serviettes", "Salle de bain", "Blanc"]
+    },
+    {
+      "id": 6,
+      "sellerId" : 0,
+      "photos": ["img_6.png"],
+      "title": "Panier de rangement tressé gris",
+      "price": 9.00,
+      "category" : "dummy",
+      "description": "Panier de rangement tressé gris avec poignées intégrées. Solide et stable, il permet de ranger plaids, linge, jouets ou accessoires divers.\n\nSon style sobre et moderne s’adapte facilement à toutes les pièces de la maison.",
+      "tags": ["Rangement", "Panier", "Tressé", "Gris"]
+    },
+    {
+      "id": 7,
+      "sellerId" : 0,
+      "photos": ["img_7.png"],
+      "title": "Lot de paniers tressés verts",
+      "price": 10.00,
+      "category" : "dummy",
+      "description": "Lot de deux paniers tressés verts de tailles différentes. Légers et pratiques, ils peuvent servir pour le rangement, la décoration ou comme vide-poches.\n\nLeur couleur naturelle apporte une touche chaleureuse et artisanale à un intérieur.",
+      "tags": ["Rangement", "Panier", "Vert", "Artisanal"]
+    },
+    {
+      "id": 8,
+      "sellerId" : 0,
+      "photos": ["img_8.png"],
+      "title": "Paire d’assiettes bleues à motif traditionnel",
+      "price": 8.00,
+      "category" : "dummy",
+      "description": "Paire d’assiettes en céramique blanche et bleue avec motif traditionnel. Élégantes et intemporelles, elles peuvent être utilisées pour le service ou comme éléments décoratifs.\n\nBon état général, idéales pour compléter un service ou créer une table au style classique.",
+      "tags": ["Vaisselle", "Assiettes", "Bleu", "Traditionnel"]
+    },
+    {
+      "id": 9,
+      "sellerId" : 0,
+      "photos": ["img_9.png"],
+      "title": "Lot de bols en céramique beige artisanale",
+      "price": 10.00,
+      "category" : "dummy",
+      "description": "Lot de plusieurs bols en céramique artisanale, de couleur beige moucheté avec un léger effet émaillé. Les formes sont volontairement irrégulières, ce qui donne beaucoup de charme et rend chaque bol unique.\n\nIdéals pour les soupes, les céréales, les desserts ou les petits plats. Robustes et agréables à utiliser au quotidien, parfaits pour une cuisine simple et naturelle.",
+      "tags": ["Vaisselle", "Céramique", "Artisanal", "Beige"]
+    },
+    {
+      "id": 10,
+      "sellerId" : 0,
+      "photos": ["img_10.png"],
+      "title": "Lot de bols verts en céramique émaillée",
+      "price": 12.00,
+      "category" : "dummy",
+      "description": "Lot de bols en céramique émaillée verte, avec un aspect légèrement marbré. Les bols sont empilables et présentent un style rustique et naturel.\n\nParfaits pour un usage quotidien ou pour apporter une touche artisanale à une table. Bon état général.",
+      "tags": ["Vaisselle", "Bols", "Céramique", "Vert"]
+    },
+    {
+      "id": 11,
+      "sellerId" : 0,
+      "photos": ["img_11.png"],
+      "title": "Bol noir en céramique minimaliste",
+      "price": 5.00,
+      "category" : "dummy",
+      "description": "Bol en céramique noire mate, au design simple et minimaliste. Forme ronde et stable, agréable en main.\n\nIdéal pour les petits plats, soupes ou céréales. Style sobre qui s’intègre facilement dans tout type de cuisine.",
+      "tags": ["Vaisselle", "Bol", "Céramique", "Noir", "Minimaliste"]
+    },
+    {
+      "id": 12,
+      "sellerId" : 0,
+      "photos": ["img_12.png"],
+      "title": "Lot de vaisselle artisanale à motifs verts",
+      "price": 35.00,
+      "category" : "dummy",
+      "description": "Important lot de vaisselle artisanale comprenant bols, assiettes et plats, décorés de motifs verts peints à la main. Chaque pièce est unique et présente de légères variations.\n\nParfait pour une table originale ou pour les amateurs de céramique artisanale. Ensemble chaleureux et plein de caractère.",
+      "tags": ["Vaisselle", "Céramique", "Artisanal", "Vert"]
+    },
+    {
+      "id": 13,
+      "sellerId" : 0,
+      "photos": ["img_13.png"],
+      "title": "Lot de moniteurs et matériel informatique",
+      "price": 40.00,
+      "category" : "dummy",
+      "description": "Lot comprenant plusieurs écrans d’ordinateur ainsi que du matériel informatique associé. Idéal pour un bureau, un espace de travail étudiant ou un usage secondaire.\n\nLes écrans s’allument correctement. Vendu en lot uniquement.",
+      "tags": ["Informatique", "Écran", "Bureau", "High-tech"]
+    },
+    {
+      "id": 14,
+      "sellerId" : 0,
+      "photos": ["img_14.png"],
+      "title": "Écran HP tout-en-un",
+      "price": 30.00,
+      "category" : "dummy",
+      "description": "Écran HP au design fin et moderne, avec pied intégré. Convient parfaitement pour un poste de travail, un bureau étudiant ou un usage multimédia.\n\nBon état esthétique général. Idéal comme écran principal ou secondaire.",
+      "tags": ["Informatique", "Écran", "HP", "Bureau"]
+    },
+    {
+      "id": 15,
+      "sellerId" : 0,
+      "photos": ["img_15.png"],
+      "title": "Service à café bleu et blanc motif traditionnel",
+      "price": 25.00,
+      "category" : "dummy",
+      "description": "Service à café en céramique bleu et blanc comprenant tasses, soucoupes et assiettes assorties, avec motifs traditionnels. Ensemble harmonieux et élégant.\n\nParfait pour les amateurs de vaisselle classique ou pour une belle table lors des invités. Bon état général.",
+      "tags": ["Vaisselle", "Service à café", "Bleu", "Traditionnel"]
+    },
+    {
+      "id": 16,
+      "sellerId" : 0,
+      "photos": ["img_16.png"],
+      "title": "Calculatrice financière HP 17BII+",
+      "price": 20.00,
+      "category" : "dummy",
+      "description": "Calculatrice financière HP 17BII+, idéale pour les études en finance, comptabilité ou gestion. Clavier complet et écran lisible.\n\nFonctionnelle et en bon état, parfaite pour les étudiants ou professionnels.",
+      "tags": ["Électronique", "Calculatrice", "HP", "Études"]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+===========================================================================
+PROJET : EcoShare - Spécifications de l'API Backend
+INTERVENANTS : Frontend (React Vite) / Backend (Java Spring Boot)
+DATE : 2026
+===========================================================================
+
+1. ARCHITECTURE GÉNÉRALE
+---------------------------------------------------------------------------
+- Technologie : Java (Spring Boot recommandé).
+- Authentification : JWT (JSON Web Token). Chaque requête protégée doit
+  inclure l'en-tête "Authorization: Bearer <token>".
+- Base de données : H2 (pour le développement) ou PostgreSQL.
+- CORS : Doit autoriser les requêtes provenant de http://localhost:5173.
+
+2. MODÈLES DE DONNÉES
+---------------------------------------------------------------------------
+- Users : { id, name, email, password, avatarId, location, likedItems: [int] }
+- Items : { id, sellerId, photos: [string], title, price, category, description, tags: [string] }
+- Messages : { id, itemId, fromUserId, toUserId, messageType, content }
+- Categories : { name, children: [string] }
+- Images : { id, name, description }
+
+3. POINTS D'ACCÈS API (ENDPOINTS)
+---------------------------------------------------------------------------
+
+--- AUTHENTIFICATION ---
+POST /api/auth/register
+   - Description : Crée un nouvel utilisateur dans la base de données.
+   - Corps requis : { name, email, password, location }
+
+POST /api/auth/login
+   - Description : Authentifier l'utilisateur.
+   - Entrée : { email, mot de passe }
+   - Sortie : { token, user: { id, name, email, ... } }
+
+--- ARTICLES (MARKETPLACE) ---
+GET /api/items
+   - Description : Retourne la liste de tous les articles publiés.
+
+POST /api/items
+   - Description : (Protégé) Créer une nouvelle annonce.
+   - Corps requis : { title, price, category, description, photos: ["nom_fichier.png"], tags: [] }
+
+PUT /api/items/{id}
+   - Description : (Protégé) Modifier un article existant. Vérifier que le sellerId correspond.
+
+DELETE /api/items/{id}
+   - Description : (Protégé) Supprimer une annonce de la base de données.
+
+--- MESSAGES ---
+GET /api/messages
+   - Description : (Protégé) Récupérer les messages où l'utilisateur est l'expéditeur ou le destinataire.
+
+POST /api/messages
+   - Description : (Protégé) Envoyer un nouveau message.
+   - Corps requis : { itemId, toUserId, content }
+
+--- IMAGES ET STOCKAGE ---
+POST /api/images/upload
+   - Description : Téléchargement Multipart. Enregistre le fichier sur le serveur.
+   - Sortie : { filename: "img_100.png" }
+
+GET /uploads/{filename}
+   - Description : Point d'accès statique pour servir et afficher les images.
+
+4. LOGIQUE MÉTIER CRITIQUE
+---------------------------------------------------------------------------
+- Catégories : Lors de la recherche d'une catégorie parente (ex: "Vêtements & Accessoires"),
+  le serveur doit inclure les articles des sous-catégories (ex: "Tops").
+- Sécurité : Si le JWT est manquant ou invalide, renvoyer une erreur 401 Unauthorized.
+- Stockage : Le champ "photos" en base de données ne stocke que les noms de fichiers (Strings).
+
+5. DÉPLOIEMENT ET CONFIGURATION
+---------------------------------------------------------------------------
+1. Utiliser Spring Initializr (start.spring.io) avec Web, JPA, H2, et Security.
+2. Implémenter un "WebMvcConfigurer" pour gérer le CORS et le mappage des ressources statiques pour /uploads/.
+3. Utiliser la bibliothèque 'jjwt' pour la génération et la validation simple des jetons.
+===========================================================================

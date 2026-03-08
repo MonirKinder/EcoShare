@@ -1,0 +1,13 @@
+{
+  "users" : [
+    {
+      "id" : 0,
+      "name" : "Jean Doe",
+      "email" : "jd@mail.com",
+      "password" : "1231247",
+      "avatarId" : 0,
+      "location" : "Université Paris-Saclay",
+      "likedItems" : [0, 1]
+    }
+  ]
+}

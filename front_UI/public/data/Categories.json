@@ -1,0 +1,12 @@
+{
+  "categories" : [
+    {
+      "name" : "Vêtements & Accessoires",
+      "children" : ["Tops", "T-shirts"]
+    },
+    {
+      "name" : "Livres & Manuels",
+      "children" : ["Romans", "Science-fiction", "Manuels scolaires"]
+    }
+  ]
+}

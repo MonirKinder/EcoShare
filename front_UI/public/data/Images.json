@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "id" : 0,
+      "name" : "img_0.png",
+      "description" : null
+    },
+    {
+      "id" : 1,
+      "name" : "img_1.png",
+      "description" : null
+    }
+  ]
+}

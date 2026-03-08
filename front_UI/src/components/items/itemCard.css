@@ -1,0 +1,91 @@
+.card-background {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 20px;
+    background: #FFF;
+    /* shadow */
+    box-shadow: 0 4px 20px 0 rgba(53, 53, 53, 0.15);
+    margin: auto;
+}
+
+
+
+.card-content{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+.card-left{
+    width: 102px;
+    height: 76px;
+    aspect-ratio: 51/38;
+    border-radius: 20px;
+    object-fit: cover;        /* recadre au lieu d'étirer */
+    object-position: center;  /* centre du recadrage */
+    display: block;           /* évite des bizarreries d'inline img */
+}
+
+
+
+.card-right{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-like{
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    cursor: pointer;
+}
+
+
+.card-header{
+    align-self: stretch;
+    color: #353535;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+.card-price{
+    color: #353535;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+
+.card-category{
+    color: rgba(53, 53, 53, 0.50);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

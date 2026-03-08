@@ -1,0 +1,12 @@
+function CompteIcon({isActive}) {
+    let color = isActive ? '#587950' : '#353535'
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 13.5C9.23858 13.5 7 11.2614 7 8.5C7 5.73858 9.23858 3.5 12 3.5C14.7614 3.5 17 5.73858 17 8.5C17 11.2614 14.7614 13.5 12 13.5ZM12 13.5C15.866 13.5 19 16.634 19 20.5M12 13.5C8.13401 13.5 5 16.634 5 20.5"
+                stroke={color} strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export default CompteIcon;
