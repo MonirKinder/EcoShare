@@ -25,15 +25,14 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        // 1. GESTION DU CORS (PREFLIGHT)
-        // Indispensable pour que le navigateur autorise l'envoi du fichier
-        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {  //sert a ignorer la requete test OPTIONS au cas ou
             response.setStatus(HttpServletResponse.SC_OK);
             return;
         }
 
-        // 2. EXTRACTION DU TOKEN
-        String authHeader = request.getHeader("Authorization");
+
+        String authHeader = request.getHeader("Authorization");   // 2. EXTRACTION DU TOKEN
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);

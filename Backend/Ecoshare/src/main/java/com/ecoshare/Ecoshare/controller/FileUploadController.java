@@ -18,8 +18,8 @@ public class FileUploadController {
     public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) {
         try {
             String fileName = fileUploadService.storeFile(file);
-            // On renvoie l'URL relative pour que le front puisse l'afficher
-            return ResponseEntity.ok(Map.of("url", "/uploads/" + fileName));
+
+            return ResponseEntity.ok(Map.of("url", "/uploads/" + fileName));   //returne l'url pour que le front puisse l'afficher
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Erreur upload : " + e.getMessage());
         }

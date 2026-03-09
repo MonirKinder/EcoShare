@@ -20,14 +20,14 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    // Récupérer tous les articles (Public)
-    @GetMapping
+
+    @GetMapping       // Récupérer tous les articles (Public)
     public List<Item> getAllItems() {
         return itemService.getAllItems();
     }
 
-    // Créer un article (Protégé par JWT)
-    @PostMapping
+
+    @PostMapping   // Créer un article (Protégé par JWT)
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         // 1. On récupère l'identité (email) validée par le JwtFilter
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
