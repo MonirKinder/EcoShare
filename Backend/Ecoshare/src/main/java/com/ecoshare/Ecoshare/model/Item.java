@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "annonces")
 @Data
 // Items : { id, sellerId, photos: [string], title,
-// price, category, description, tags: [string] }
+// price, category,  description, tags: [string] }
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

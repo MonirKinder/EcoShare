@@ -18,28 +18,25 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User registerUser(User user) {
-        // 1. On crypte le mot de passe brut
-        String hashedPassword = passwordEncoder.encode(user.getPassword());
+    public User registerUser(User user) {               //enregistre l'utilisateur dans la bdd avec un mdp crypté
 
-        // 2. On remplace le mot de passe brut par la version cryptée
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
 
-        // 3. On sauvegarde l'utilisateur en base de données
         return userRepository.save(user);
     }
-    public boolean authenticate(String email, String rawPassword) {
-        // 1. On cherche l'utilisateur par son email
+    public boolean authenticate(String email, String rawPassword) {     //cherche un utilisateur par mail puis regarde si le mdp crypte match
+
         Optional<User> userOptional = userRepository.findByEmail(email);
 
-        // 2. S'il existe, on compare les mots de passe
+
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             return passwordEncoder.matches(rawPassword, user.getPassword());
         }
 
-        // 3. S'il n'existe pas, la connexion échoue
-        return false;
+
+        return false;       //return false si ne trouve pas de mail
     }
 
 

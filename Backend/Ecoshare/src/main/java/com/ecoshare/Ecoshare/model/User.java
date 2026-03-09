@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "users")
-@Data
+@Data      //pas besoin de getters et setters
 
 public class User {
     @Id

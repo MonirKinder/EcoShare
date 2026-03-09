@@ -19,47 +19,44 @@ public class ItemService {
         this.userRepository = userRepository;
     }
 
-    // Méthode renommée en createItem
-    public Item createItem(Item item, String sellerEmail) {
+    public Item createItem(Item item, String sellerEmail) {       //cree  l'annonce dans l'a table items
         User seller = userRepository.findByEmail(sellerEmail)
                 .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
-
-
 
         item.setVendeur(seller);
 
         return itemRepository.save(item);
     }
 
-    // Méthode renommée en getAllItems
+    //recupere toutes les annonces findALL pas besoin detre ecrit dans repository, outil de base
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
-    // Modifier un article existant
+
     public Item updateItem(Long id, Item itemDetails, String sellerEmail) {
-        // 1. On cherche l'article
-        Item existingItem = itemRepository.findById(id)
+
+        Item existingItem = itemRepository.findById(id)                          //trouve l'annonce avecID
                 .orElseThrow(() -> new RuntimeException("Article introuvable"));
 
-        // 2. On vérifie que l'utilisateur qui fait la requête est bien le propriétaire
-        if (!existingItem.getVendeur().getEmail().equals(sellerEmail)) {
+
+        if (!existingItem.getVendeur().getEmail().equals(sellerEmail)) {    //verifie si l'utilisateur est le vendeur de l'article a modifier
             throw new RuntimeException("Accès refusé : vous n'êtes pas le vendeur de cet article.");
         }
 
-        // 3. On met à jour les champs
-        existingItem.setTitle(itemDetails.getTitle());
-        existingItem.setPrice(itemDetails.getPrice());
-        existingItem.setCategory(itemDetails.getCategory());
+
+        existingItem.setTitle(itemDetails.getTitle());                 //item details envoye par le frontend contient les donnees a modifier
+        existingItem.setPrice(itemDetails.getPrice());                  //je dois regler dans le cas ou il y a pas de modification que d'un parametre
+        existingItem.setCategory(itemDetails.getCategory());              //avec des nulls et modifier juste si cest pas null
         existingItem.setDescription(itemDetails.getDescription());
         existingItem.setPhotos(itemDetails.getPhotos());
         existingItem.setTags(itemDetails.getTags());
 
-        // 4. On sauvegarde
+
         return itemRepository.save(existingItem);
     }
 
-    // Supprimer un article
-    public void deleteItem(Long id, String sellerEmail) {
+
+    public void deleteItem(Long id, String sellerEmail) {                   //supprime l'article demandé
         Item existingItem = itemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Article introuvable"));
 

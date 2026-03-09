@@ -30,28 +30,27 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
 
-        // Si mail deja dans la base de données
         if (userRepository.existsByEmail(user.getEmail())) {
             return ResponseEntity.badRequest().body("Erreur : Cet email est déjà utilisé.");
         }
 
-        // continue l'inscription sinon
+
         User savedUser = authService.registerUser(user);
-        return ResponseEntity.ok(savedUser);
+        return ResponseEntity.ok(savedUser);      //
     }
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {  // il va recuperer login request
 
         boolean isAuthenticated = authService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
-        if (isAuthenticated) {
-            // Si le mot de passe est bon, on génère le jeton
-            String token = jwtUtil.generateToken(loginRequest.getEmail());
+        if (isAuthenticated) {  // si la mdp et mail sont corrects
 
-            // On le renvoie sous format JSON
-            Map<String, String> response = new HashMap<>();
+            String token = jwtUtil.generateToken(loginRequest.getEmail());  //genere token
+
+
+            Map<String, String> response = new HashMap<>();    //cree dictionaire pour le format JSON {"token" : token}
             response.put("token", token);
 
             return ResponseEntity.ok(response);

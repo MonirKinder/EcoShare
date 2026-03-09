@@ -12,7 +12,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email); //verifie email deja existant quand on fait l'inscirpiton
                                          //select count(*)>0 from users where email = ?
-    Optional<User> findByEmail(String email); // utilise pour login
+    Optional<User> findByEmail(String email); // utilise pour login, donne mail ssi user existe,
+                                                //sinon return boite vide
 
 
 }
