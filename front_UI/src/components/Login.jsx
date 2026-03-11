@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { login } from '../services/api'; 
-import { useMainContext } from "../hooks/UseMain.jsx"; // Ajout de l'import du contexte
+import { login } from "../services/api.js";
+import { useMainContext } from "../hooks/UseMain.jsx"; 
 
 const Login = () => {
-    // On récupère les outils pour changer de page
+    
     const { configPages, setActivePage } = useMainContext();
     
     const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ const Login = () => {
             const token = await login({ email, password });
             console.log("Token reçu et stocké :", token);
             
-            // REDIRECTION : On change la page active vers le catalogue
+            
             setActivePage(configPages.catalogue.id);
             
         } catch (error) {

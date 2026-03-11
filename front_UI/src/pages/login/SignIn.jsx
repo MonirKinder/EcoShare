@@ -3,11 +3,14 @@ import {useState} from "react";
 import GoBackButton from "../../assets/GoBackButton.jsx";
 import Button from "../../components/Button.jsx";
 import {useMainContext} from "../../hooks/UseMain.jsx";
+import { register } from "../../services/api.js";
+
 
 function SignIn() {
 
     const { setActivePage, configPages } = useMainContext()
-
+    const [error, setError] = useState("");
+    
     const [formData, setFormData] = useState({
         username: "",
         location: "",
@@ -18,6 +21,36 @@ function SignIn() {
     function updateFormData(k, v) {
         setFormData({...formData, [k]:v});
     }
+
+
+
+    const handleRegister = async () => {
+        setError("");
+
+        // Vérification locale avant l'envoi
+        if (formData.password !== formData.passwordConfirmation) {
+            setError("Les mots de passe ne correspondent pas.");
+            return;
+        }
+
+        try {
+            // On envoie les données à la fonction register d'api.js
+            // Note : Ton backend doit accepter username et location si tu les envoies
+            await register({
+                email: formData.email,
+                password: formData.password,
+                username: formData.username,
+                location: formData.location
+            });
+
+            alert("Compte créé avec succès !");
+            setActivePage(configPages.login.id);
+        } catch (err) {
+            setError("Erreur : l'email est peut-être déjà utilisé.");
+            console.error(err);
+        }
+    };
+
     const inputs = [
         {
             name: "username",
@@ -72,7 +105,7 @@ function SignIn() {
             <div style={{
                 marginTop: '20px'
             }}>
-                <Button title={'Créer le compte'} onClick={()=> setActivePage(configPages.login.id)} />
+                <Button title={'Créer le compte'} onClick={handleRegister} />
             </div>
         </div>
     )
