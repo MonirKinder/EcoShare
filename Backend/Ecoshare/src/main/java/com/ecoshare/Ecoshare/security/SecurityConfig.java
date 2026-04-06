@@ -47,6 +47,7 @@ public class SecurityConfig {
                         .requestMatchers("/uploads/**").permitAll()         // Accès aux fichiers images
                         .requestMatchers("/h2-console/**").permitAll()      // Console H2
                         .requestMatchers(HttpMethod.GET, "/api/items/**").permitAll() // Catalogue public
+                        .requestMatchers("/api/messages/**").authenticated() // Messagerie (JWT requis)
                         .anyRequest().authenticated()                       // Sécurise tout le reste
                 )
                 // 6. Ajout du filtre JWT
