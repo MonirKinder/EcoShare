@@ -1,0 +1,89 @@
+.chat-container { 
+    display: flex; 
+    flex-direction: column; 
+    height: 85vh; 
+    background: #fff; 
+}
+
+.chat-header { 
+    padding: 15px; 
+    background: #587950; 
+    color: white; 
+    display: flex; 
+    align-items: center; /* Corrigé ici : avec un tiret */
+    gap: 10px; 
+}
+
+.back-btn { 
+    background: none; 
+    border: none; 
+    color: white; 
+    font-size: 20px; 
+    cursor: pointer; 
+}
+
+.notif-dot { 
+    margin-left: auto; 
+    background: #FF4444; 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
+}
+
+.messages-list { 
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 15px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.message-bubble { 
+    padding: 10px 15px; 
+    border-radius: 18px; 
+    max-width: 75%; 
+    font-size: 14px; 
+}
+
+.message-bubble.me { 
+    align-self: flex-end; 
+    background: #E2F0D9; 
+    color: #333; 
+}
+
+.message-bubble.other { 
+    align-self: flex-start; 
+    background: #F1F1F1; 
+    color: #333; 
+}
+
+.chat-input-area { 
+    padding: 10px; 
+    display: flex; 
+    gap: 10px; 
+    border-top: 1px solid #EEE; 
+    align-items: center; /* Corrigé ici aussi */
+}
+
+.chat-input-area input { 
+    flex: 1; 
+    padding: 10px; 
+    border: 1px solid #DDD; 
+    border-radius: 20px; 
+    outline: none; 
+}
+
+.send-btn { 
+    background: #587950; 
+    color: white; 
+    border: none; 
+    padding: 8px 15px; 
+    border-radius: 15px; 
+    cursor: pointer; 
+}
+
+.photo-btn { 
+    font-size: 22px; 
+    cursor: pointer; 
+}
