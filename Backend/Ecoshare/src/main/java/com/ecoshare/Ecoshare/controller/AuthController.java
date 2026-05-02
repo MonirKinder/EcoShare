@@ -41,21 +41,41 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {  // il va recuperer login request
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
 
         boolean isAuthenticated = authService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
 
-        if (isAuthenticated) {  // si la mdp et mail sont corrects
+        if (isAuthenticated) {
+            String token = jwtUtil.generateToken(loginRequest.getEmail());
 
-            String token = jwtUtil.generateToken(loginRequest.getEmail());  //genere token
+            User user = userRepository.findByEmail(loginRequest.getEmail()).get();
 
-
-            Map<String, String> response = new HashMap<>();    //cree dictionaire pour le format JSON {"token" : token}
+            Map<String, Object> response = new HashMap<>();
             response.put("token", token);
+            response.put("userId", user.getId());
+            response.put("name", user.getName());
+            response.put("email", user.getEmail());
 
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Erreur : Email ou mot de passe incorrect.");
         }
+    }
+
+    
+    @GetMapping("/me")
+    public ResponseEntity<?> getCurrentUser(org.springframework.security.core.Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        User user = userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("userId", user.getId());
+        response.put("name", user.getName());
+        response.put("email", user.getEmail());
+        response.put("location", user.getLocation());
+        return ResponseEntity.ok(response);
     }
 }

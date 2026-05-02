@@ -16,7 +16,8 @@ function Slider ({images}) {
                 <div className="slider-track" style={{transform: `translateX(-${index * 100}%)`}}>
                     {images.map((image, index) => (
                         <div className="slider-slide" key={index}>
-                            <img className="slider-image" src={`/images/${image}`} alt=""/>
+                            {}
+                            <img className="slider-image" src={image} alt=""/>
                         </div>
                     ))}
                 </div>

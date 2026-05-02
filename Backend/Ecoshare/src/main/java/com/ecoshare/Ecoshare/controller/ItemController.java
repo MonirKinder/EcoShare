@@ -26,6 +26,18 @@ public class ItemController {
         return itemService.getAllItems();
     }
 
+    @GetMapping("/mine")   // Annonces du user connecté
+    public ResponseEntity<List<Item>> getMyItems() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        List<Item> items = itemService.getItemsBySellerEmail(authentication.getName());
+        return ResponseEntity.ok(items);
+    }
+
+    @GetMapping("/search")  // Recherche par mot-clé (Public)
+    public List<Item> searchItems(@RequestParam String keyword) {
+        return itemService.searchItems(keyword);
+    }
+
 
     @PostMapping   // Créer un article (Protégé par JWT)
     public ResponseEntity<Item> createItem(@RequestBody Item item) {

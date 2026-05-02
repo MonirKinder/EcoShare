@@ -32,25 +32,29 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // 1. Configuration CORS
+                // Configuration CORS
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                // 2. Désactivation CSRF (nécessaire pour les API stateless)
+                // Désactivation CSRF (nécessaire pour les API stateless)
                 .csrf(csrf -> csrf.disable())
-                // 3. Autoriser les frames pour la console H2
+                //  Autoriser les frames pour la console H2
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
-                // 4. Gestion de session Stateless
+                // Gestion de session Stateless
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // 5. Autorisations des routes
+                //  Autorisations des routes
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()        // Inscription / Connexion
+                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()  // Inscription / Connexion
+                        .requestMatchers("/api/auth/me").authenticated()   // Profil courant (JWT requis)
                         .requestMatchers("/api/upload/**").permitAll()      // Upload d'images
                         .requestMatchers("/uploads/**").permitAll()         // Accès aux fichiers images
                         .requestMatchers("/h2-console/**").permitAll()      // Console H2
+                        .requestMatchers(HttpMethod.GET, "/api/items/search").permitAll() // Recherche publique
+                        .requestMatchers("/api/items/mine").authenticated()               // Mes annonces (JWT)
+                        .requestMatchers("/api/users/**").authenticated()                 // Profil (JWT)
                         .requestMatchers(HttpMethod.GET, "/api/items/**").permitAll() // Catalogue public
                         .requestMatchers("/api/messages/**").authenticated() // Messagerie (JWT requis)
                         .anyRequest().authenticated()                       // Sécurise tout le reste
                 )
-                // 6. Ajout du filtre JWT
+                // Ajout du filtre JWT
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

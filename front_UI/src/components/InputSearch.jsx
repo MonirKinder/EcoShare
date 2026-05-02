@@ -1,17 +1,11 @@
-import {useState, useEffect} from "react";
-
-function InputSearch() {
-    const [searchText, setSearchText] = useState("");
-    useEffect(() => {
-        console.log(searchText);
-    }, [searchText]);
+function InputSearch({ value, onChange }) {
     return (
         <div>
             <input
-                value={searchText}
-                onChange={e => setSearchText(e.target.value)}
+                value={value}
+                onChange={e => onChange(e.target.value)}
                 className={'inputSearch'}
-                placeholder={'Rechercher'}/>
+                placeholder={'Rechercher'} />
         </div>
     )
 }

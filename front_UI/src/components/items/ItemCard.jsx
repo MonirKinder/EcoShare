@@ -11,13 +11,17 @@ function ItemCard({item, isSmall}) {
                 setActivePage(configPages.item.id)}}>
             <div className="card-content">
                 <div className="card-left">
+                    {/* FIX: backend photos are stored as "/uploads/filename", not "/images/filename"
+                        Vite proxy forwards /uploads/* to http://localhost:8080/uploads/* */}
                     <img style={{width: '102px',
                         height: '76px',
                         aspectRatio: 51/38,
                         objectFit: 'cover',
                         objectPosition: 'center',
                         display: 'block',
-                        borderRadius: '20px'}} src={`/images/${item.photos[0]}`} alt={"Annonce"} />
+                        borderRadius: '20px'}}
+                         src={item.photos && item.photos.length > 0 ? item.photos[0] : '/placeholder.png'}
+                         alt={"Annonce"} />
                 </div>
                 <div className="card-right">
                     <div className="card-text">

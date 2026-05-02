@@ -3,23 +3,27 @@ import { login } from "../services/api.js";
 import { useMainContext } from "../hooks/UseMain.jsx"; 
 
 const Login = () => {
-    
-    const { configPages, setActivePage } = useMainContext();
+    const { configPages, setActivePage, setCurrentUser } = useMainContext();
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         try {
-            const token = await login({ email, password });
-            console.log("Token reçu et stocké :", token);
             
+            const data = await login({ email, password });
+
             
+            const user = { id: data.userId, name: data.name, email: data.email };
+            localStorage.setItem('user', JSON.stringify(user));
+            setCurrentUser(user);
+
             setActivePage(configPages.catalogue.id);
-            
-        } catch (error) {
-            alert("Erreur : " + error.message);
+        } catch (err) {
+            setError("Email ou mot de passe incorrect.");
         }
     };
 
@@ -41,6 +45,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)} 
                     required 
                 />
+                {error && <p style={{ color: 'red', fontSize: '0.9em' }}>{error}</p>}
                 <button type="submit">Se connecter</button>
             </form>
         </div>

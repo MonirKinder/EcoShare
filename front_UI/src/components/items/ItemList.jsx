@@ -1,27 +1,14 @@
-import {useEffect, useState} from "react";
 import ItemCard from "./ItemCard.jsx"
-import {useMainContext} from "../../hooks/UseMain.jsx";
 
-function ItemList() {
-    const [items, setItem] = useState(null);
-
-    useEffect(() => {
-        fetch('/data/PublishedItems.json')
-            .then(res => res.json())
-            .then(data => {
-                setItem(data.items);
-                console.log(data.items);
-            })
-            .catch(err => console.error(err));
-    }, []);
+function ItemList({ items, loading }) {
+    if (loading) return <p style={{ textAlign: 'center', color: '#888' }}>Chargement...</p>;
+    if (!items || items.length === 0) return <p style={{ textAlign: 'center', color: '#888' }}>Aucune annonce disponible.</p>;
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap:'20px', paddingBottom:'120px' }}>
-            {
-                items && items.length > 0 && items.map((item, index) => (
-                    <ItemCard item={item} key={index}/>
-                ))
-            }
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: '20px', paddingBottom: '120px' }}>
+            {items.map((item, index) => (
+                <ItemCard item={item} key={index} />
+            ))}
         </div>
     )
 }

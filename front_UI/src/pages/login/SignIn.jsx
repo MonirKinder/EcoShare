@@ -39,7 +39,7 @@ function SignIn() {
             await register({
                 email: formData.email,
                 password: formData.password,
-                username: formData.username,
+                name: formData.username,       // FIX: backend model field is "name", not "username"
                 location: formData.location
             });
 

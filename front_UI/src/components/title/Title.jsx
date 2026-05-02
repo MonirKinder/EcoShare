@@ -1,47 +1,44 @@
-import './title.css'
+import "./title.css";
 import GoBackButton from "../../assets/GoBackButton.jsx";
-import CompteIcon from "../../assets/CompteIcon.jsx";
 import SettingsIcon from "../../assets/SettingsIcon.jsx";
 import PlusIcon from "../../assets/PlusIcon.jsx";
-import {useEffect, useState} from "react";
-import {useMainContext} from "../../hooks/UseMain.jsx";
+import { useMainContext } from "../../hooks/UseMain.jsx";
 
 function Title() {
+    const { configPages, setActivePage, activePage } = useMainContext();
 
-    const { configPages, setActivePage, activePage } = useMainContext()
+    const pageKey = Object.keys(configPages).find(key => configPages[key].id === activePage);
+    if (!pageKey) return null;
+    const page = configPages[pageKey];
 
-    const [page, setPage] = useState(null);
-
-    useEffect(() => {
-        Object.entries(configPages).forEach(([page, settings]) => {
-            console.log(page, settings);
-            if (settings.id === activePage) {
-                setPage(page);
-            }
-        })
-    }, [])
     return (
         <div className="title-parent">
-            {page && <>
-                <div className="title-left-icon">
-                    {configPages[page].hasLeftIcon && <GoBackButton isNotWhite={true}/>}
-                </div>
+            <div
+                className="title-left-icon"
+                onClick={() => page.hasLeftIcon && setActivePage(configPages.account.id)}
+                style={{ cursor: page.hasLeftIcon ? "pointer" : "default" }}
+            >
+                {page.hasLeftIcon && <GoBackButton isNotWhite={true} />}
+            </div>
 
+            <div className="title-text" style={{ color: pageKey === "settings" ? "#FFF" : "#353535" }}>
+                {page.title}
+            </div>
 
-                <div className="title-text" style={{color: page === 'settings' ? '#FFF' : '#353535'}}>
-                    {configPages[page].title}
-                </div>
-
-
-                <div className="title-right-icon">
-                    {configPages[page].hasRightIconPlus && <PlusIcon/>}
-                    {configPages[page].hasRightIconSettings && <span onClick={() => {
-                        setActivePage(configPages.settings.id)
-                    }}> <SettingsIcon/> </span>}
-                </div>
-            </>}
+            <div className="title-right-icon">
+                {page.hasRightIconPlus && (
+                    <span onClick={() => setActivePage(configPages.newItem.id)} style={{ cursor: "pointer" }}>
+                        <PlusIcon />
+                    </span>
+                )}
+                {page.hasRightIconSettings && (
+                    <span onClick={() => setActivePage(configPages.settings.id)} style={{ cursor: "pointer" }}>
+                        <SettingsIcon />
+                    </span>
+                )}
+            </div>
         </div>
-    )
+    );
 }
 
 export default Title;

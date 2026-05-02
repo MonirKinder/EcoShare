@@ -28,9 +28,18 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    //recupere toutes les annonces findALL pas besoin detre ecrit dans repository, outil de base
     public List<Item> getAllItems() {
         return itemRepository.findAll();
+    }
+
+    public List<Item> getItemsBySellerEmail(String email) {
+        User seller = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+        return itemRepository.findByVendeurId(seller.getId());
+    }
+
+    public List<Item> searchItems(String keyword) {
+        return itemRepository.findByTitleContainingIgnoreCase(keyword);
     }
 
     public Item updateItem(Long id, Item itemDetails, String sellerEmail) {
